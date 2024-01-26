@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <string name="details_cancel_button">Cancel</string>
+    <string name="details_instructions">* Enter the shoe details then tap \'Save\' to add your new shoe !</string>
+    <string name="details_save_button">Save</string>
+    <string name="details_company_label">Company: %s</string>
+    <string name="details_description_label">Description: %s</string>
+    <string name="details_name_label">Name: %s</string>
+    <string name="details_size_label">Size: %s</string>
+
+    <string name="details_company_hint">- shoe company -</string>
+    <string name="details_description_hint">- shoe description -</string>
+    <string name="details_name_hint">- shoe name -</string>
+    <string name="details_size_hint">- shoe size -</string>
+
 </resources>

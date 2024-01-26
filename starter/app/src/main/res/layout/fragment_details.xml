@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -12,20 +13,121 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffaa55"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:layout_marginHorizontal="50dp">
+        android:layout_margin="@dimen/padding_body">
 
         <TextView
-            android:layout_marginVertical="20dp"
-            android:id="@+id/welcomeHeader"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Welcome to the shoe store. You'll find the best shoe"
+            android:visibility="@{viewModel.instrucionsVisibility}"
+            android:id="@+id/shoeDetailsMessage"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:paddingBottom="@dimen/padding_body"
+            android:text="@string/details_instructions"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/shoeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_body"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsMessage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.format(@string/details_name_label, viewModel.shoeDetails.name)}"
+                android:textSize="@dimen/font_size_body" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.format(@string/details_company_label, viewModel.shoeDetails.company)}"
+                android:textSize="@dimen/font_size_body" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.format(@string/details_size_label, viewModel.shoeDetails.size)}"
+                android:textSize="@dimen/font_size_body" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.format(@string/details_description_label, viewModel.shoeDetails.description)}"
+                android:textSize="@dimen/font_size_body" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{()->viewModel.onSave()}"
+            android:text="@string/details_save_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shoeDetails" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{()->viewModel.onNextScreen()}"
+            android:text="@string/details_cancel_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shoeDetails" />
+
+        <LinearLayout
+            android:id="@+id/shoeInputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/saveButton">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_body"
+                android:autofillHints="@string/details_name_hint"
+                android:hint="@string/details_name_hint"
+                android:inputType="text"
+                android:onTextChanged="@{()->viewModel.onEditUpdate()}"
+                android:text="@={viewModel.shoeDetails.name}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/details_company_hint"
+                android:hint="@string/details_company_hint"
+                android:inputType="text"
+                android:onTextChanged="@{()->viewModel.onEditUpdate()}"
+                android:text="@={viewModel.shoeDetails.company}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/details_size_hint"
+                android:hint="@string/details_size_hint"
+                android:inputType="numberDecimal"
+                android:onTextChanged="@{()->viewModel.onEditUpdate()}"
+                android:text="@={viewModel.shoeDetails.size}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/details_description_hint"
+                android:hint="@string/details_description_hint"
+                android:onTextChanged="@{()->viewModel.onEditUpdate()}"
+                android:inputType="text"
+                android:text="@={viewModel.shoeDetails.description}" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
