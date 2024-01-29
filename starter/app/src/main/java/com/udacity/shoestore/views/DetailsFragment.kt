@@ -26,11 +26,10 @@ class DetailsFragment : BaseFragment() {
         inflater, R.layout.fragment_details, container, false
     ).apply {
         viewModel = mainViewModel
-        lifecycleOwner = this@DetailsFragment
+        lifecycleOwner = this@DetailsFragment.viewLifecycleOwner
     }.root
 
     override fun navigateToNext() {
         findNavController().navigateUp()
     }
-
 }

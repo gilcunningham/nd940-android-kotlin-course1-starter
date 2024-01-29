@@ -1,14 +1,19 @@
 package com.udacity.shoestore
 
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoeLiveData
 
 class MainViewModel : ViewModel() {
+    private val _shoeListings = mutableListOf<Shoe>()
     val instrucionsVisibility = MutableLiveData(View.VISIBLE)
     val onNextScreen = MutableLiveData<Boolean>()
-    val shoeDetails = ShoeLiveData()
+    var shoeDetails = ShoeLiveData()
+    val shoeListings : MutableLiveData<List<Shoe>> = MutableLiveData(_shoeListings)
+    val fabVisibility = MutableLiveData(View.GONE)
 
     fun onNextScreen() {
         onNextScreen.value = true
@@ -23,11 +28,9 @@ class MainViewModel : ViewModel() {
     }
 
     fun onSave() {
-        val shoe = shoeDetails.shoe
-        println("*** on save:")
-        println("*** name : ${shoe.name}")
-        println("*** size : ${shoe.size}")
-        println("*** co : ${shoe.company}")
-        println("*** desc : ${shoe.description}")
+        _shoeListings.add(shoeDetails.shoe)
+        shoeListings.value = _shoeListings
+        shoeDetails = ShoeLiveData()
+        onNextScreen()
     }
 }

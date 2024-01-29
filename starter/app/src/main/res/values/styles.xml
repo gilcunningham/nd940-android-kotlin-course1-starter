@@ -16,4 +16,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BodyText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/font_size_body</item>
+    </style>
+
+    <style name="ListItemText" parent="BodyText">
+        <item name="android:background">@color/shoeItemBackground</item>
+    </style>
+
 </resources>

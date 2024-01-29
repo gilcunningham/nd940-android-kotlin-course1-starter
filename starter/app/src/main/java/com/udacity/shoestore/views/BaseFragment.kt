@@ -25,15 +25,18 @@ abstract class BaseFragment : Fragment() {
         setupViewModel()
     }
 
-    protected fun setupViewModel() {
-        println("** ${this::class.java.name} setupViewModel() - $mainViewModel")
-        mainViewModel.clearNavigation()
+    @CallSuper
+    open protected fun setupViewModel() {
         mainViewModel.onNextScreen.observe(this) { navigateToNext ->
+            println("*** navigate to next - $navigateToNext")
             if (navigateToNext) {
+                mainViewModel.clearNavigation()
                 navigateToNext()
             }
         }
     }
 
-    open fun navigateToNext() = findNavController().navigate(nextScreen)
+    open fun navigateToNext() {
+        findNavController().navigate(nextScreen)
+    }
 }
