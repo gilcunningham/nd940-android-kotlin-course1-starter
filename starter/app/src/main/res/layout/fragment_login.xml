@@ -12,18 +12,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_large"
         android:background="#ffaa55">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="@string/login_email_hint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -37,7 +34,8 @@
             android:id="@+id/passwordInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/login_password_hint"
+            android:paddingBottom="@dimen/padding_body"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/emailInput">
@@ -54,7 +52,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{()->viewModel.onNextScreen()}"
+            android:onClick="@{() -> viewModel.onNextScreen()}"
             android:text="Login"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/passwordInput" />
@@ -65,8 +63,8 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{()->viewModel.onNextScreen()}"
-            android:text="Create Account"
+            android:onClick="@{() -> viewModel.onNextScreen()}"
+            android:text="New Account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/passwordInput" />
 
