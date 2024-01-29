@@ -22,21 +22,13 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/listings_empty_list_label"
-                android:textAlignment="center"
-                android:textSize="@dimen/font_size_body" />
-
-            <TextView
-                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:textAlignment="center"
+                android:paddingVertical="@dimen/padding_large"
                 android:text="@string/listings_empty_list_instructions"
-                android:textAlignment="gravity"
                 android:textSize="@dimen/font_size_body" />
 
         </LinearLayout>
 
     </ScrollView>
-
 </layout>

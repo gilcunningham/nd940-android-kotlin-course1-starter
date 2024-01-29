@@ -1,6 +1,9 @@
 package com.udacity.shoestore.views
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
@@ -22,13 +25,13 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupViewModel()
+        observeViewModel()
     }
 
     @CallSuper
-    open protected fun setupViewModel() {
+    open protected fun observeViewModel() {
+        mainViewModel.hideFab()
         mainViewModel.onNextScreen.observe(this) { navigateToNext ->
-            println("*** navigate to next - $navigateToNext")
             if (navigateToNext) {
                 mainViewModel.clearNavigation()
                 navigateToNext()

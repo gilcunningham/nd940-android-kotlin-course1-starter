@@ -12,32 +12,32 @@ import com.udacity.shoestore.databinding.ItemListShoeBinding
 import com.udacity.shoestore.models.Shoe
 
 /**
- * The Shoe Store [Fragment] to display Shoe Store Listings.
+ * The Shoe Store [Fragment] to display shoe listings and navigate to details entry screen.
  *
  * @author Gil Cunningham
  */
 class ListingsFragment : BaseFragment() {
 
+    private lateinit var binding : FragmentListingsBinding
     override val nextScreen: Int = R.id.action_listingsFragment_to_detailsFragment
 
-    private lateinit var binding : FragmentListingsBinding
-
-    override fun setupViewModel() {
-        super.setupViewModel()
-        mainViewModel.fabVisibility.value = View.VISIBLE
+    override fun observeViewModel() {
+        super.observeViewModel()
         mainViewModel.shoeListings.observe(this) { shoeListings ->
-            println("*** observe shoe listings")
             if (shoeListings.isNotEmpty()) {
                 binding.shoeListings.removeAllViews()
             }
             shoeListings.forEach { shoe ->
-                println("*** SHOE: ${shoe.name} ${shoe.company}" )
                 binding.shoeListings.apply {
                     addView(createShoeItemView(shoe))
                 }
-
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.showFab()
     }
 
     private fun createShoeItemView(shoe : Shoe) =
@@ -56,7 +56,7 @@ class ListingsFragment : BaseFragment() {
             inflater, R.layout.fragment_listings, container, false
         ).apply {
             viewModel = mainViewModel
-            lifecycleOwner = this@ListingsFragment.viewLifecycleOwner
+            lifecycleOwner = viewLifecycleOwner
         }
         return binding.root
     }
