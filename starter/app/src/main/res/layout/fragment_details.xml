@@ -40,33 +40,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/details_name_label, viewModel.shoeDetails.name)}"
-                android:textSize="@dimen/font_size_body" />
+                android:textAppearance="@style/BodyText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/details_company_label, viewModel.shoeDetails.company)}"
-                android:textSize="@dimen/font_size_body" />
+                android:textAppearance="@style/BodyText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/details_size_label, viewModel.shoeDetails.size)}"
-                android:textSize="@dimen/font_size_body" />
+                android:textAppearance="@style/BodyText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/details_description_label, viewModel.shoeDetails.description)}"
-                android:textSize="@dimen/font_size_body" />
+                android:textAppearance="@style/BodyText" />
+
         </LinearLayout>
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
             android:onClick="@{()->viewModel.onSave()}"
             android:text="@string/details_save_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +75,6 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
             android:onClick="@{()->viewModel.onNextScreen()}"
             android:text="@string/details_cancel_button"
             app:layout_constraintEnd_toEndOf="parent"

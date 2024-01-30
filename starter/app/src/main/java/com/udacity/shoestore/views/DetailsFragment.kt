@@ -16,7 +16,13 @@ import com.udacity.shoestore.databinding.FragmentDetailsBinding
  * @author Gil Cunningham
  */
 class DetailsFragment : BaseFragment() {
+
     override val nextScreen: Int = View.GONE
+
+    override fun navigateToNext() {
+        println("*** navigate to next")
+        findNavController().navigateUp()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,8 +34,4 @@ class DetailsFragment : BaseFragment() {
         viewModel = mainViewModel
         lifecycleOwner = viewLifecycleOwner
     }.root
-
-    override fun navigateToNext() {
-        findNavController().navigateUp()
-    }
 }

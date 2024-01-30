@@ -8,30 +8,34 @@ import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoeLiveData
 
 /**
- * Shoe Store [ViewModel]
+ * Shoe Store [ViewModel] maintains observable list of shoes, provides view visibility and text
+ * backing, and handles ui events.
+ *
+ * @author Gil Cunningham
  */
 class MainViewModel : ViewModel() {
 
+    private val _detailsMessageVisibility = MutableLiveData(View.VISIBLE)
     private val _fabShown = MutableLiveData(false)
     private val _onNextScreen = MutableLiveData<Boolean>()
     private val _shoeListingsData = mutableListOf<Shoe>()
     private val _shoeListings = MutableLiveData(_shoeListingsData)
+    val detailsMessageVisibility : LiveData<Int> = _detailsMessageVisibility
     val fabShown : LiveData<Boolean> = _fabShown
-    val detailsMessageVisibility = MutableLiveData(View.VISIBLE)
     val onNextScreen : LiveData<Boolean> = _onNextScreen
     var shoeDetails = ShoeLiveData()
     val shoeListings : LiveData<MutableList<Shoe>> = _shoeListings
 
-    fun clearNavigation() {
+    fun onClearNavigation() {
         _onNextScreen.value = false
     }
 
-    fun hideFab() {
+    fun onHideFab() {
         _fabShown.value = false
     }
 
     fun onEditUpdate() {
-        detailsMessageVisibility.value = View.GONE
+        _detailsMessageVisibility.value = View.GONE
     }
 
     fun onFabClick() = onNextScreen()
@@ -47,7 +51,7 @@ class MainViewModel : ViewModel() {
         onNextScreen()
     }
 
-    fun showFab() {
+    fun onShowFab() {
         _fabShown.value = true
     }
 }

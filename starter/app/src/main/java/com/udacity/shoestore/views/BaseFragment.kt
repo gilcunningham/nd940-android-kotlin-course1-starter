@@ -27,18 +27,18 @@ abstract class BaseFragment : Fragment() {
         findNavController().navigate(nextScreen)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        observeViewModel()
-    }
-
     @CallSuper
     protected open fun observeViewModel() {
         mainViewModel.onNextScreen.observe(this) { navigateToNext ->
             if (navigateToNext) {
-                mainViewModel.clearNavigation()
+                mainViewModel.onClearNavigation()
                 navigateToNext()
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        observeViewModel()
     }
 }

@@ -28,20 +28,6 @@ class ListingsFragment : BaseFragment() {
             model = shoe
         }.root
 
-    override fun observeViewModel() {
-        super.observeViewModel()
-        mainViewModel.shoeListings.observe(this) { shoeListings ->
-            if (shoeListings.isNotEmpty()) {
-                binding.shoeListings.removeAllViews()
-            }
-            shoeListings.forEach { shoe ->
-                binding.shoeListings.apply {
-                    addView(createShoeItemView(shoe))
-                }
-            }
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,13 +42,26 @@ class ListingsFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        mainViewModel.shoeListings.observe(viewLifecycleOwner) { shoeListings ->
+            if (shoeListings.isNotEmpty()) {
+                binding.shoeListings.removeAllViews()
+            }
+            shoeListings.forEach { shoe ->
+                binding.shoeListings.apply {
+                    addView(createShoeItemView(shoe))
+                }
+            }
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        mainViewModel.showFab()
+        mainViewModel.onShowFab()
     }
 
     override fun onPause() {
         super.onPause()
-        mainViewModel.hideFab()
+        mainViewModel.onHideFab()
     }
 }
