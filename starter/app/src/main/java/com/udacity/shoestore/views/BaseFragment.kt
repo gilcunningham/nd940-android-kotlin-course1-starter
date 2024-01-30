@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.MainViewModel
 
 /**
- * Base fragment to handle next screen navigation.
+ * Base Shoe Store [Fragment] to handle next screen navigation.
  *
  * @author Gil Cunningham
  */
@@ -23,23 +23,22 @@ abstract class BaseFragment : Fragment() {
     @get:IdRes
     protected abstract val nextScreen: Int
 
+    protected open fun navigateToNext() {
+        findNavController().navigate(nextScreen)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         observeViewModel()
     }
 
     @CallSuper
-    open protected fun observeViewModel() {
-        mainViewModel.hideFab()
+    protected open fun observeViewModel() {
         mainViewModel.onNextScreen.observe(this) { navigateToNext ->
             if (navigateToNext) {
                 mainViewModel.clearNavigation()
                 navigateToNext()
             }
         }
-    }
-
-    open fun navigateToNext() {
-        findNavController().navigate(nextScreen)
     }
 }

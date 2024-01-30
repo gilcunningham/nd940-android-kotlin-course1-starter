@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoeLiveData
 
+/**
+ * Shoe Store [ViewModel]
+ */
 class MainViewModel : ViewModel() {
 
     private val _fabShown = MutableLiveData(false)
@@ -14,23 +17,27 @@ class MainViewModel : ViewModel() {
     private val _shoeListingsData = mutableListOf<Shoe>()
     private val _shoeListings = MutableLiveData(_shoeListingsData)
     val fabShown : LiveData<Boolean> = _fabShown
-    val instrucionsVisibility = MutableLiveData(View.VISIBLE)
+    val detailsMessageVisibility = MutableLiveData(View.VISIBLE)
     val onNextScreen : LiveData<Boolean> = _onNextScreen
     var shoeDetails = ShoeLiveData()
     val shoeListings : LiveData<MutableList<Shoe>> = _shoeListings
-
-    fun onNextScreen() {
-        _onNextScreen.value = true
-    }
-
-    fun onFabClick() = onNextScreen()
 
     fun clearNavigation() {
         _onNextScreen.value = false
     }
 
+    fun hideFab() {
+        _fabShown.value = false
+    }
+
     fun onEditUpdate() {
-        instrucionsVisibility.value = View.GONE
+        detailsMessageVisibility.value = View.GONE
+    }
+
+    fun onFabClick() = onNextScreen()
+
+    fun onNextScreen() {
+        _onNextScreen.value = true
     }
 
     fun onSave() {
@@ -42,9 +49,5 @@ class MainViewModel : ViewModel() {
 
     fun showFab() {
         _fabShown.value = true
-    }
-
-    fun hideFab() {
-        _fabShown.value = false
     }
 }

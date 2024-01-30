@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -9,54 +8,42 @@
             type="com.udacity.shoestore.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_large"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_marginVertical="20dp"
-            android:id="@+id/welcomeHeader"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Welcome to the shoe store. You'll find the best shoe"
+            android:id="@+id/welcome_header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
+            android:text="@string/welcome_header"
+            android:textAppearance="@style/HeaderText" />
 
         <TextView
-            android:id="@+id/welcomeInfo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/welcomeHeader"
-            android:text="Welcome to the shoe store. You'll find the best shoe"
+            android:id="@+id/welcome_info"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:textAlignment="center"
+            android:paddingTop="@dimen/padding_body"
+            android:text="@string/welcome_message"
+            android:textAppearance="@style/BodyText" />
 
         <Button
-            android:layout_marginVertical="20dp"
-            android:id="@+id/instructionsLink"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/welcomeInfo"
-            android:text="Learn more >"
-            android:onClick="@{()->viewModel.onNextScreen()}"
+            android:id="@+id/learn_more_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:layout_marginVertical="@dimen/margin_body"
+            android:onClick="@{() -> viewModel.onNextScreen()}"
+            android:text="@string/welcome_next_label" />
 
-        <!--
-        <Button
-            android:id="@+id/newAccountButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            android:id="@+id/instructions"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/welcomeHeader"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_shoe"
+            android:contentDescription="@string/welcome_shoe_image_content_description" />
 
-            app:layout_constraintTop_toBottomOf="@id/instructionsLink" />
-        -->
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </layout>
