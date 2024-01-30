@@ -11,7 +11,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/padding_body"
+        android:layout_margin="@dimen/margin_body"
         android:fillViewport="true">
 
         <LinearLayout
@@ -21,14 +21,14 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/SubHeaderText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAlignment="center"
                 android:paddingVertical="@dimen/padding_large"
-                android:text="@string/listings_empty_list_instructions"
-                android:textSize="@dimen/font_size_body" />
+                android:text="@string/listings_empty_list_instructions" />
 
         </LinearLayout>
 
     </ScrollView>
+
 </layout>
