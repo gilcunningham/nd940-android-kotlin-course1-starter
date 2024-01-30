@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="android.view.View" />
 
         <variable
@@ -16,24 +17,24 @@
         android:layout_margin="@dimen/padding_body">
 
         <TextView
-            android:visibility="@{viewModel.instrucionsVisibility}"
-            android:id="@+id/shoeDetailsMessage"
+            android:id="@+id/shoe_details_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/padding_body"
             android:text="@string/details_instructions"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorAttention"
+            android:visibility="@{viewModel.detailsMessageVisibility}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/shoeDetails"
+            android:id="@+id/shoe_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/padding_body"
             android:orientation="vertical"
+            android:paddingBottom="@dimen/padding_body"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoeDetailsMessage">
+            app:layout_constraintTop_toBottomOf="@+id/shoe_details_message">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +62,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -69,10 +70,10 @@
             android:onClick="@{()->viewModel.onSave()}"
             android:text="@string/details_save_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/shoeDetails" />
+            app:layout_constraintTop_toBottomOf="@id/shoe_details" />
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -80,15 +81,15 @@
             android:onClick="@{()->viewModel.onNextScreen()}"
             android:text="@string/details_cancel_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/shoeDetails" />
+            app:layout_constraintTop_toBottomOf="@id/shoe_details" />
 
         <LinearLayout
-            android:id="@+id/shoeInputs"
+            android:id="@+id/shoe_inputs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/saveButton">
+            app:layout_constraintTop_toBottomOf="@+id/save_button">
 
             <EditText
                 android:layout_width="match_parent"
@@ -123,8 +124,8 @@
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/details_description_hint"
                 android:hint="@string/details_description_hint"
-                android:onTextChanged="@{()->viewModel.onEditUpdate()}"
                 android:inputType="text"
+                android:onTextChanged="@{()->viewModel.onEditUpdate()}"
                 android:text="@={viewModel.shoeDetails.description}" />
 
         </LinearLayout>

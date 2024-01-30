@@ -1,29 +1,31 @@
 <resources>
     <string name="app_name">ShoeStore</string>
     <string name="details_cancel_button">Cancel</string>
-    <string name="details_instructions">* Enter the shoe details then tap \'Save\' to add your new shoe !</string>
-    <string name="details_save_button">Save</string>
-    <string name="details_company_label">Company: %s</string>
-
-
     <string name="details_company_hint">- shoe company -</string>
+    <string name="details_company_label">Company: %s</string>
     <string name="details_description_hint">- shoe description -</string>
+    <string name="details_description_label">Description: %s</string>
+    <string name="details_instructions">* Enter the shoe details then tap \'Save\' to add your new shoe !</string>
     <string name="details_name_hint">- shoe name -</string>
     <string name="details_name_label">Name: %s</string>
+    <string name="details_save_button">Save</string>
     <string name="details_size_hint">- shoe size -</string>
-    <string name="details_description_label">Description: %s</string>
     <string name="details_size_label">Size: %s</string>
-
-    <string name="listings_empty_list_instructions">TAP \'+\' TO ADD A SHOE</string>
-
-    <string name="shoe_item_label">%1$s, %2$s</string>
-    <string name="shoe_item_size">Size %s</string>
-    <string name="shoe_item_description">Description %s</string>
-
     <string name="fab_content_description">Add a shoe</string>
-
+    <string name="instructions_header">Easy Instructions !</string>
+    <string name="instructions_message">Tap \'Shoe Listings\'. On the next screen tap \'+\' to add a new shoe.</string>
+    <string name="instructions_next_label">Shoe Listings</string>
+    <string name="instructions_shoe_image_content_description">Shoe image</string>
+    <string name="listings_empty_list_instructions">TAP \'+\' TO ADD A SHOE</string>
     <string name="login_email_hint">Email</string>
+    <string name="login_login_label">Login</string>
+    <string name="login_new_account_label">New Account</string>
     <string name="login_password_hint">Password</string>
-
-
+    <string name="shoe_item_description">Description - %s</string>
+    <string name="shoe_item_label">Make/Model - %1$s, %2$s</string>
+    <string name="shoe_item_size">Size - %s</string>
+    <string name="welcome_header">Welcome to Shoe Store !</string>
+    <string name="welcome_message">You\'ll find the best selection and inventory available.</string>
+    <string name="welcome_next_label">Learn More</string>
+    <string name="welcome_shoe_image_content_description">Shoe image</string>
 </resources>

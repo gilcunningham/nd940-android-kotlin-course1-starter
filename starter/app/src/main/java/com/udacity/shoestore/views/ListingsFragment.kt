@@ -21,6 +21,13 @@ class ListingsFragment : BaseFragment() {
     private lateinit var binding : FragmentListingsBinding
     override val nextScreen: Int = R.id.action_listingsFragment_to_detailsFragment
 
+    private fun createShoeItemView(shoe : Shoe) =
+        DataBindingUtil.inflate<ItemListShoeBinding>(
+            layoutInflater, R.layout.item_list_shoe, null, false
+        ).apply {
+            model = shoe
+        }.root
+
     override fun observeViewModel() {
         super.observeViewModel()
         mainViewModel.shoeListings.observe(this) { shoeListings ->
@@ -35,18 +42,6 @@ class ListingsFragment : BaseFragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.showFab()
-    }
-
-    private fun createShoeItemView(shoe : Shoe) =
-        DataBindingUtil.inflate<ItemListShoeBinding>(
-            layoutInflater, R.layout.item_list_shoe, null, false
-        ).apply {
-            model = shoe
-        }.root
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,5 +54,15 @@ class ListingsFragment : BaseFragment() {
             lifecycleOwner = viewLifecycleOwner
         }
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.showFab()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mainViewModel.hideFab()
     }
 }

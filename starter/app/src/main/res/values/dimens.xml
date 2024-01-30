@@ -3,5 +3,7 @@
     <dimen name="padding_body">20dp</dimen>
     <dimen name="padding_large">50dp</dimen>
     <dimen name="font_size_body">18sp</dimen>
+    <dimen name="font_size_header">22sp</dimen>
     <dimen name="margin_large">50dp</dimen>
+    <dimen name="margin_body">20dp</dimen>
 </resources>
