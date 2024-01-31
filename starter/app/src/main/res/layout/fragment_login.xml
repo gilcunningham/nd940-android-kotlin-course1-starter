@@ -9,6 +9,8 @@
             type="com.udacity.shoestore.MainViewModel" />
     </data>
 
+    <!-- Use of constraint layout to horizontally align two buttons and vertically align
+    both under the bottom text input -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
