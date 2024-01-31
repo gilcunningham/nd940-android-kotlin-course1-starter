@@ -16,7 +16,8 @@
     <string name="instructions_message">Tap \'Shoe Listings\'. On the next screen tap \'+\' to add a new shoe.</string>
     <string name="instructions_next_label">Shoe Listings</string>
     <string name="instructions_shoe_image_content_description">Shoe image</string>
-    <string name="listings_empty_list_instructions">TAP \'+\' TO ADD A SHOE</string>
+    <string name="listings_empty_list_instructions">Tap \'+\' to Add a Shoe</string>
+    <string name="listings_menu_item_logout">Logout</string>
     <string name="login_email_hint">Email</string>
     <string name="login_login_label">Login</string>
     <string name="login_new_account_label">New Account</string>

@@ -14,6 +14,7 @@
         android:layout_margin="@dimen/margin_body"
         android:fillViewport="true">
 
+        <!-- A simple vertical arrangement of shoe items -->
         <LinearLayout
             android:id="@+id/shoe_listings"
             android:layout_width="match_parent"

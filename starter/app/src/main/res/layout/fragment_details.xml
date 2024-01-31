@@ -11,6 +11,8 @@
             type="com.udacity.shoestore.MainViewModel" />
     </data>
 
+    <!-- Use of constraint layout to horizontally align two buttons and vertically center both
+    between two other views -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,6 +29,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- A vertically aligned stack of shoe detail views. This could alternatively be removed
+        and each view applied with constraints, but the overhead of constraining each view seemed
+        like more trouble than constraining with a single layout -->
         <LinearLayout
             android:id="@+id/shoe_details"
             android:layout_width="match_parent"
@@ -39,25 +44,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/details_name_label, viewModel.shoeDetails.name)}"
+                android:text="@{@string/details_name_label(viewModel.shoeDetails.name)}"
                 android:textAppearance="@style/BodyText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/details_company_label, viewModel.shoeDetails.company)}"
+                android:text="@{@string/details_company_label(viewModel.shoeDetails.company)}"
                 android:textAppearance="@style/BodyText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/details_size_label, viewModel.shoeDetails.size)}"
+                android:text="@{@string/details_size_label(viewModel.shoeDetails.size)}"
                 android:textAppearance="@style/BodyText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/details_description_label, viewModel.shoeDetails.description)}"
+                android:text="@{@string/details_description_label(viewModel.shoeDetails.description)}"
                 android:textAppearance="@style/BodyText" />
 
         </LinearLayout>
@@ -66,7 +71,7 @@
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()->viewModel.onSave()}"
+            android:onClick="@{() -> viewModel.onSave()}"
             android:text="@string/details_save_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/shoe_details" />
@@ -75,11 +80,15 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()->viewModel.onNextScreen()}"
+            android:onClick="@{() -> viewModel.onNextScreen()}"
             android:text="@string/details_cancel_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/shoe_details" />
 
+        <!-- Like the linear layout above, a vertically aligned stack of shoe text entry views.
+        This too could alternatively be removed and each view applied with constraints, but the
+        overhead of constraining each view seemed like more trouble than constraining with a single
+        layout -->
         <LinearLayout
             android:id="@+id/shoe_inputs"
             android:layout_width="match_parent"
